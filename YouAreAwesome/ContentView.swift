@@ -25,7 +25,7 @@ struct ContentView: View {
             Text(message)
                 .font(.largeTitle)
                 .fontWeight(.heavy)
-                .foregroundStyle(.red)
+                .foregroundStyle(.accent)
                 .multilineTextAlignment(.center)
                 .minimumScaleFactor(0.5)
                 .frame(height: 120)
@@ -57,8 +57,7 @@ struct ContentView: View {
                 Button("Show Message"){
                     let messages = ["Great work!", "Keep it up!", "You're Doing Great!", "High Five!", "Outstanding!"]
                     
-                    lastMessageNumber = nonRepeatingRandom(lastNumber: lastMessageNumber,
-                                                           upperBound: messages.count-1)
+                    lastMessageNumber = nonRepeatingRandom(lastNumber: lastMessageNumber, upperBound: messages.count-1)
                     message = messages[lastMessageNumber]
                     
                     lastImageNumber = nonRepeatingRandom(lastNumber: lastImageNumber,
@@ -75,10 +74,11 @@ struct ContentView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .font(.title2)
-                .tint(.orange)
             }
+            .tint(.accentColor)
         }
         .padding()
+        
         
     }
     
@@ -107,6 +107,11 @@ struct ContentView: View {
     }
 }
 
-#Preview {
+#Preview("Light Mode") {
     ContentView()
+        .preferredColorScheme(.light)
+}
+#Preview("Dark Mode") {
+    ContentView()
+        .preferredColorScheme(.dark)
 }
